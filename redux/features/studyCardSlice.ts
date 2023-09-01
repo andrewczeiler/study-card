@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '@/redux/store';
+import * as uuid from 'uuid';
 
 
 export interface StudyCard {
@@ -20,8 +21,13 @@ export const studyCardSlice = createSlice({
     name: 'studyCard',
     initialState,
     reducers: {
-        addCard: (state, action : {payload: StudyCard, type: string}) => {
-            
+        addCard: (state, action : {payload: Omit<StudyCard, 'id'>, type: string}) => {
+            const studyCard = {
+                id: uuid.v4(),
+                question: action.payload.question,
+                answer: action.payload.answer
+            }
+            state.studyCards.push(studyCard)
         },
         removeCard: (state, action : {payload: string, type: string}) => {
             
