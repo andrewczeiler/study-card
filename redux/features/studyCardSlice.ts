@@ -30,10 +30,25 @@ export const studyCardSlice = createSlice({
             state.studyCards.push(studyCard)
         },
         removeCard: (state, action : {payload: string, type: string}) => {
-            
+            for(let i = 0; i < state.studyCards.length; i++){
+                if(state.studyCards[i].id === action.payload) {
+                    state.studyCards = [
+                        ...state.studyCards.slice(0, i),
+                        ...state.studyCards.slice(i+1)
+                    ]
+                }
+            }
         },
-        editCard: (state, action : {payload: string, type: string}) => {
-            
+        editCard: (state, action : {payload: StudyCard, type: string}) => {
+            for(let i = 0; i < state.studyCards.length; i++){
+                if(state.studyCards[i].id === action.payload.id) {
+                    state.studyCards = [
+                        ...state.studyCards.slice(0, i),
+                        action.payload,
+                        ...state.studyCards.slice(i+1)
+                    ]
+                }
+            }
         },
         clearStorage: state => {
             state.studyCards = [];
