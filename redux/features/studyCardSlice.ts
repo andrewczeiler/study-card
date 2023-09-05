@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { RootState } from '@/redux/store';
 import * as uuid from 'uuid';
 
 
@@ -27,7 +26,7 @@ export const studyCardSlice = createSlice({
                 question: action.payload.question,
                 answer: action.payload.answer
             }
-            state.studyCards.push(studyCard)
+            state.studyCards.push(studyCard);
         },
         removeCard: (state, action : {payload: string, type: string}) => {
             for(let i = 0; i < state.studyCards.length; i++){
@@ -57,7 +56,5 @@ export const studyCardSlice = createSlice({
 });
 
 export const { addCard, removeCard, editCard, clearStorage } = studyCardSlice.actions;
-
-// export const selectItemCount = (state: RootState) => state.shoppingCart.totalItems;
 
 export default studyCardSlice.reducer;
