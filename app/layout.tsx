@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 		<html lang='en' suppressHydrationWarning={true} >
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
-				<body className={inter.className}>
+				<body className={inter.className} style={{backgroundColor: '#dff7d2'}}>
 					<Providers>
 						{children}
 					</Providers>

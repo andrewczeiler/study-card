@@ -18,8 +18,8 @@ export default function ViewStudyCard(props : ViewStudyCardProps){
 
 
     return (
-        <Paper> 
-            <Box>
+        <Paper sx={{width: '43%'}}> 
+            <Box p='24px' >
                 <Typography>
                     { 'Q: ' + studyCard.question }
                 </Typography>
