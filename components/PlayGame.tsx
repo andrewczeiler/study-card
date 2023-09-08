@@ -5,6 +5,7 @@ import { useAppSelector } from '@/redux/hooks';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import QuestionAnswerCard from './QuestionAnswerCard';
+import Button from '@mui/material/Button';
 
 
 export default function PlayGame(){
@@ -30,7 +31,20 @@ export default function PlayGame(){
                 { initialLength ?
                     <QuestionAnswerCard gameStudyCard={studyCards.filter((studyCard) => studyCard.status === 'INIT')[0]} />
                     :
-                    <>All out of cards</>
+                    <Box
+                        display='flex'
+                        flexDirection='column'
+                        justifyContent='center'
+                        alignItems='center'
+                        rowGap='12px'
+                    >
+                        <Typography fontWeight='600' fontSize='1.6em' >
+                            All out of cards!
+                        </Typography>
+                        <Button variant='outlined' onClick={() => location.reload() } >
+                            Play Again
+                        </Button>
+                    </Box> 
                 }
             </Box>
         </Box>

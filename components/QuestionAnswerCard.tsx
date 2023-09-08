@@ -9,7 +9,6 @@ import Button from '@mui/material/Button';
 
 import { setCorrect, setIncorrect } from '@/redux/features/playGameSlice';
 import { useAppDispatch } from '@/redux/hooks';
-import { StudyCard } from '@/types/StudyCard';
 import Typography from '@mui/material/Typography';
 import { GameStudyCard } from '@/types/GameStudyCard';
 
