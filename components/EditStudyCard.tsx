@@ -7,33 +7,39 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-import { addCard } from '@/redux/features/studyCardSlice';
+import { editCard } from '@/redux/features/studyCardSlice';
 import { useAppDispatch } from '@/redux/hooks';
+import { StudyCard } from '@/types/StudyCard';
 
-// Could make this a modal, where there's a button on the main page and clicking the button will open this in the modal to add a study card
-// Could also make study card setes 
-export default function AddStudyCard(){
-    const [ question, setQuestion ] = React.useState('');
-    const [ answer, setAnswer ] = React.useState('');
+
+interface EditStudyCardProps {
+    studyCard: StudyCard
+    exitEditMode: () => void
+}
+
+export default function EditStudyCard(props: EditStudyCardProps){
+    const { studyCard, exitEditMode } = props;
+    const [ question, setQuestion ] = React.useState(studyCard.question);
+    const [ answer, setAnswer ] = React.useState(studyCard.answer);
 
     const dispatch = useAppDispatch();
 
-    function addStudyCard(){
+    function editStudyCard(){
         if(question && answer) {
-            const studyCard = {
+            const editedStudyCard = {
+                id: studyCard.id,
                 question,
                 answer
             }
 
-            setQuestion('');
-            setAnswer('');
+            exitEditMode();
 
-            dispatch(addCard(studyCard));
+            dispatch(editCard(editedStudyCard));
         }
     }
 
     return (
-        <Paper sx={{width: '43%'}}> 
+        <Paper> 
             <Box
                 p='32px'
                 display='flex'
@@ -45,6 +51,7 @@ export default function AddStudyCard(){
                     label='Question' 
                     value={question} 
                     onChange={(e) => setQuestion(e.target.value)}  
+                    fullWidth
                     multiline 
                 />
                 <TextField 
@@ -52,10 +59,11 @@ export default function AddStudyCard(){
                     label='Answer' 
                     value={answer} 
                     onChange={(e) => setAnswer(e.target.value)} 
+                    fullWidth
                     multiline 
                 />
-                <Button variant='outlined' onClick={addStudyCard} > 
-                    Add Study Card
+                <Button variant='outlined' onClick={editStudyCard} > 
+                    Update Study Card
                 </Button>
             </Box>
         </Paper>

@@ -1,12 +1,7 @@
+import { StudyCard } from '@/types/StudyCard';
 import { createSlice } from '@reduxjs/toolkit';
 import * as uuid from 'uuid';
 
-
-export interface StudyCard {
-    id: string
-    question: string
-    answer: string
-}
 
 export interface StudyCardState {
     studyCards: StudyCard[]
