@@ -67,7 +67,7 @@ export default function ManageCardsPage() {
 			>
 				{ studyCards.map((studyCard) => {
 					return (
-						<ViewStudyCard studyCard={studyCard} />
+						<ViewStudyCard studyCard={studyCard} key={studyCard.id} />
 					)
 				})}
 				<AddStudyCard />

@@ -25,7 +25,7 @@ export default function ViewStudyCard(props : ViewStudyCardProps){
     const { studyCard } = props;
 
     const [ editMode, setEditMode ] = React.useState(false);
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [ anchorEl, setAnchorEl ] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
     const dispatch = useAppDispatch();
